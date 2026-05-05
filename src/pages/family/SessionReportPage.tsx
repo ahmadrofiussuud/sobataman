@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { 
   Star, 
   MapPin, 
@@ -12,7 +13,8 @@ import {
   MoreVertical,
   Activity,
   Heart,
-  ArrowRight
+  ArrowRight,
+  Sparkles
 } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { Button } from '../../components/ui/Button'
@@ -22,6 +24,7 @@ import { Card, CardContent } from '../../components/ui/Card'
 import { cn } from '../../lib/utils'
 
 export default function SessionReportPage() {
+  const navigate = useNavigate()
   const [rating, setRating] = useState(0)
 
   return (
@@ -125,6 +128,14 @@ export default function SessionReportPage() {
               "Bambang sangat bersemangat hari ini saat latihan di taman. Ia berhasil menempuh jarak 50 meter tanpa bantuan sama sekali, sebuah kemajuan besar dari sesi minggu lalu. Ia juga sempat bercerita tentang hobi barunya menggambar."
             </p>
           </blockquote>
+          
+          <Button 
+            variant="accent" 
+            className="w-full h-14 bg-gradient-to-r from-primary to-accent hover:from-primary-hover hover:to-accent-hover text-white text-lg font-bold rounded-pill shadow-xl shadow-primary/20"
+            onClick={() => navigate('/dashboard/ai-analysis/session-1')}
+          >
+            <Sparkles size={22} className="mr-3" /> Analisis AI (Smart Assessment)
+          </Button>
         </section>
 
         {/* DOKUMENTASI */}

@@ -16,7 +16,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = 'primary', size = 'md', isLoading, leftIcon, rightIcon, asChild, children, ...props }, ref) => {
     const Comp = asChild ? Slot : 'button'
-    const MotionComp = motion(Comp as any)
+    const MotionComp = motion.create(Comp as any)
 
     const variants = {
       primary: 'bg-primary text-white hover:bg-primary-hover shadow-md shadow-primary/20',

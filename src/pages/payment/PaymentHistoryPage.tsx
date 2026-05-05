@@ -29,115 +29,127 @@ export default function PaymentHistoryPage() {
   ]
 
   return (
-    <div className="space-y-8">
-      <div className="space-y-1">
-        <h1 className="text-3xl font-display font-bold text-text-primary">Riwayat Transaksi</h1>
-        <p className="text-text-secondary">Pantau seluruh pengeluaran pendampingan Anda.</p>
+    <div className="container-custom px-6 lg:px-12 pt-24 md:pt-36 space-y-10 pb-12">
+      <div className="space-y-2">
+        <h1 className="text-4xl font-display font-bold text-text-primary tracking-tight">Riwayat Transaksi</h1>
+        <p className="text-text-secondary text-lg">Pantau seluruh pengeluaran pendampingan Anda dengan transparan.</p>
       </div>
 
       {/* SUMMARY STATS */}
       <div className="grid sm:grid-cols-3 gap-6">
-        <Card className="bg-primary text-white border-none shadow-lg">
-          <CardContent className="p-6 space-y-2">
-            <p className="text-xs opacity-70 font-bold uppercase tracking-widest">Total Bulan Ini</p>
-            <p className="text-3xl font-mono font-bold">Rp 446.000</p>
-            <div className="flex items-center gap-1.5 text-[10px] text-primary-light font-bold">
-              <TrendingUp size={12} /> 12% dari bulan lalu
+        <Card className="bg-gradient-to-br from-primary to-primary-dark text-white border-none shadow-xl shadow-primary/20 relative overflow-hidden group">
+          <div className="absolute -right-4 -top-4 w-24 h-24 bg-white/10 rounded-full blur-2xl group-hover:bg-white/20 transition-all"></div>
+          <CardContent className="p-8 space-y-3 relative z-10">
+            <p className="text-xs opacity-80 font-bold uppercase tracking-[0.2em]">Total Bulan Ini</p>
+            <p className="text-4xl font-mono font-bold tracking-tighter">Rp 446.000</p>
+            <div className="flex items-center gap-1.5 text-xs text-white/90 bg-white/10 w-fit px-2 py-1 rounded-sm font-bold">
+              <TrendingUp size={14} /> 12% dari bulan lalu
             </div>
           </CardContent>
         </Card>
-        <Card className="border-border/50">
-          <CardContent className="p-6 space-y-2">
-            <p className="text-xs text-text-muted font-bold uppercase tracking-widest">Jumlah Sesi</p>
-            <p className="text-3xl font-mono font-bold text-text-primary">8 Sesi</p>
-            <p className="text-[10px] text-text-secondary">Terakhir: 2 hari yang lalu</p>
+        <Card className="border-border/60 shadow-sm hover:shadow-md transition-shadow">
+          <CardContent className="p-8 space-y-3">
+            <p className="text-xs text-text-muted font-bold uppercase tracking-[0.2em]">Jumlah Sesi</p>
+            <p className="text-4xl font-mono font-bold text-text-primary tracking-tighter">8 Sesi</p>
+            <div className="flex items-center gap-2 text-xs text-text-secondary">
+              <Calendar size={14} className="text-primary" /> Terakhir: 2 hari yang lalu
+            </div>
           </CardContent>
         </Card>
-        <Card className="border-border/50">
-          <CardContent className="p-6 space-y-2">
-            <p className="text-xs text-text-muted font-bold uppercase tracking-widest">Saldo AmanPay</p>
-            <p className="text-3xl font-mono font-bold text-text-primary">Rp 742.500</p>
-            <Button variant="ghost" size="sm" className="h-6 text-[10px] p-0 text-primary hover:bg-transparent">Top Up Sekarang</Button>
+        <Card className="border-border/60 shadow-sm hover:shadow-md transition-shadow">
+          <CardContent className="p-8 space-y-3">
+            <p className="text-xs text-text-muted font-bold uppercase tracking-[0.2em]">Saldo AmanPay</p>
+            <p className="text-4xl font-mono font-bold text-text-primary tracking-tighter">Rp 742.500</p>
+            <Button variant="link" size="sm" className="h-auto p-0 text-primary font-bold hover:no-underline flex items-center gap-1 group">
+              Top Up Sekarang <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
+            </Button>
           </CardContent>
         </Card>
       </div>
 
       {/* FILTER BAR */}
-      <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
+      <div className="flex flex-col sm:flex-row gap-6 items-center justify-between bg-surface p-4 rounded-xl border border-border shadow-sm">
         <div className="flex gap-2 overflow-x-auto pb-1 w-full sm:w-auto scrollbar-hide">
           {['Semua', 'Berhasil', 'Menunggu', 'Refunded'].map(f => (
             <button
               key={f}
               onClick={() => setActiveFilter(f)}
               className={cn(
-                "px-4 py-2 rounded-pill text-xs font-bold transition-all whitespace-nowrap",
-                activeFilter === f ? "bg-primary text-white" : "bg-white border border-border text-text-secondary hover:bg-gray-50"
+                "px-6 py-2.5 rounded-pill text-sm font-bold transition-all whitespace-nowrap",
+                activeFilter === f ? "bg-primary text-white shadow-md shadow-primary/20" : "bg-white border border-border text-text-secondary hover:bg-gray-50"
               )}
             >
               {f}
             </button>
           ))}
         </div>
-        <div className="flex gap-2 w-full sm:w-auto">
-          <div className="relative flex-1 sm:w-64">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-text-muted" size={16} />
+        <div className="flex gap-3 w-full sm:w-auto">
+          <div className="relative flex-1 sm:w-80">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-text-muted" size={18} />
             <input 
               type="text" 
-              placeholder="Cari transaksi..."
-              className="w-full pl-9 pr-4 py-2 rounded-sm border border-border bg-white text-xs outline-none focus:border-primary"
+              placeholder="Cari nama helper atau transaksi..."
+              className="w-full pl-11 pr-5 py-3 rounded-md border border-border bg-background text-sm outline-none focus:ring-2 focus:ring-primary/10 focus:border-primary transition-all"
             />
           </div>
-          <button className="p-2 border border-border rounded-sm hover:bg-gray-50 transition-colors">
-            <Filter size={20} className="text-text-secondary" />
+          <button className="p-3 border border-border rounded-md bg-white hover:bg-gray-50 transition-all text-text-secondary shadow-sm">
+            <Filter size={22} />
           </button>
         </div>
       </div>
 
       {/* LIST TRANSAKSI */}
-      <div className="space-y-4">
+      <div className="space-y-6">
         {transactions.map((tx) => (
           <motion.div
             key={tx.id}
-            initial={{ opacity: 0, x: -10 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            whileHover={{ y: -4 }}
+            className="group"
           >
-            <Card className="border-border/50 hover:shadow-md transition-all">
-              <CardContent className="p-4 lg:p-6">
-                <div className="flex flex-col sm:flex-row items-center gap-6">
-                  <div className="flex items-center gap-4 flex-1 w-full">
-                    <Avatar fallback={tx.helper[0]} size="lg" className="bg-primary-light text-primary font-bold" />
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 mb-1">
-                        <p className="font-bold text-sm truncate">{tx.helper}</p>
+            <Card className="border-border/60 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 overflow-hidden">
+              <CardContent className="p-0">
+                <div className="flex flex-col sm:flex-row items-stretch">
+                  <div className="flex items-center gap-6 p-6 flex-1 bg-white">
+                    <Avatar fallback={tx.helper[0]} size="lg" className="h-16 w-16 bg-primary-light text-primary font-bold shadow-inner" />
+                    <div className="flex-1 min-w-0 space-y-1">
+                      <div className="flex items-center gap-3">
+                        <p className="font-bold text-lg text-text-primary truncate">{tx.helper}</p>
                         <Badge 
                           variant={tx.status === 'BERHASIL' ? 'success' : (tx.status === 'PENDING' ? 'warning' : 'secondary')}
-                          className="text-[8px] py-0"
+                          className="px-3 py-0.5 rounded-pill text-[10px] font-bold"
                         >
                           {tx.status}
                         </Badge>
                       </div>
-                      <p className="text-xs text-text-secondary flex items-center gap-1.5">
-                        <Calendar size={12} /> {tx.date} · {tx.method}
-                      </p>
+                      <div className="flex items-center gap-4 text-sm text-text-secondary">
+                        <span className="flex items-center gap-1.5"><Calendar size={14} className="text-primary/60" /> {tx.date}</span>
+                        <span className="flex items-center gap-1.5"><Wallet size={14} className="text-primary/60" /> {tx.method}</span>
+                      </div>
                     </div>
                   </div>
                   
-                  <div className="flex items-center justify-between sm:justify-end gap-8 w-full sm:w-auto border-t sm:border-t-0 pt-4 sm:pt-0">
-                    <div className="text-left sm:text-right">
+                  <div className="flex items-center justify-between sm:justify-end gap-10 p-6 bg-gray-50/50 sm:min-w-[300px] border-t sm:border-t-0 sm:border-l border-border">
+                    <div className="text-left sm:text-right space-y-1">
                       <p className={cn(
-                        "text-lg font-mono font-bold",
-                        tx.status === 'REFUNDED' ? "text-text-muted line-through" : "text-text-primary"
+                        "text-2xl font-mono font-bold tracking-tighter",
+                        tx.status === 'REFUNDED' ? "text-text-muted/50 line-through" : "text-text-primary"
                       )}>
                         Rp {tx.amount.toLocaleString('id-ID')}
                       </p>
-                      {tx.status === 'REFUNDED' && <p className="text-[10px] text-success font-bold">Dana Dikembalikan</p>}
+                      {tx.status === 'REFUNDED' && (
+                        <div className="flex items-center gap-1 text-success font-bold text-[10px] uppercase tracking-wider justify-end">
+                          <RotateCcw size={12} /> Dana Dikembalikan
+                        </div>
+                      )}
                     </div>
                     <div className="flex gap-2">
-                      <button className="p-2 text-text-secondary hover:bg-gray-100 rounded-sm transition-colors" title="Download Invoice">
-                        <Download size={18} />
+                      <button className="p-3 text-text-secondary hover:bg-white hover:text-primary hover:shadow-sm rounded-md transition-all" title="Download Invoice">
+                        <Download size={20} />
                       </button>
-                      <button className="p-2 text-primary hover:bg-primary-light rounded-sm transition-colors">
-                        <ChevronRight size={18} />
+                      <button className="p-3 bg-primary/5 text-primary hover:bg-primary hover:text-white rounded-md transition-all">
+                        <ChevronRight size={22} />
                       </button>
                     </div>
                   </div>

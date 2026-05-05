@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { 
   Bell, 
   MapPin, 
@@ -17,7 +18,8 @@ import {
   CheckCircle2,
   AlertCircle,
   ShieldCheck,
-  Search
+  Search,
+  Sparkles
 } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from '../../components/ui/Button'
@@ -27,6 +29,7 @@ import { Card, CardContent } from '../../components/ui/Card'
 import { cn } from '../../lib/utils'
 
 export default function FamilyDashboardPage() {
+  const navigate = useNavigate()
   const [isMapModalOpen, setIsMapModalOpen] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const [activeTab, setActiveTab] = useState<'overview' | 'payment'>('overview')
@@ -54,7 +57,7 @@ export default function FamilyDashboardPage() {
   return (
     <div className="pb-20">
       {/* HERO SECTION - REBITE STYLE */}
-      <section className="relative -mt-24 pt-48 pb-32 overflow-hidden min-h-[600px] flex items-center">
+      <section className="relative -mt-20 md:-mt-28 pt-48 md:pt-60 pb-32 overflow-hidden min-h-[600px] flex items-center">
         {/* Background Image with Dark Overlay */}
         <div className="absolute inset-0 z-0">
           <img 
@@ -66,7 +69,7 @@ export default function FamilyDashboardPage() {
           <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
         </div>
         
-        <div className="container-custom relative z-10 px-4 sm:px-8 lg:px-12">
+        <div className="container-custom relative z-10 px-6 lg:px-12">
           <div className="max-w-4xl space-y-10">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -127,7 +130,7 @@ export default function FamilyDashboardPage() {
         </div>
       </section>
 
-      <div className="container-custom px-4 sm:px-8 lg:px-12 space-y-12 mt-12">
+      <div className="container-custom px-6 lg:px-12 space-y-12 mt-12">
 
       {activeTab === 'overview' ? (
         <>
@@ -326,6 +329,16 @@ export default function FamilyDashboardPage() {
                         <div className="bg-primary-light/10 p-4 rounded-md border border-primary/5">
                           <p className="text-xs font-bold text-primary uppercase tracking-wider mb-1">Catatan Helper</p>
                           <p className="text-sm text-text-primary leading-relaxed italic">"{report.note}"</p>
+                        </div>
+
+                        <div className="pt-2">
+                          <Button 
+                            variant="accent" 
+                            className="w-full h-12 bg-gradient-to-r from-primary to-accent hover:from-primary-hover hover:to-accent-hover text-white font-bold rounded-pill shadow-lg shadow-primary/20"
+                            onClick={() => navigate(`/dashboard/ai-analysis/${i + 1}`)}
+                          >
+                            <Sparkles size={18} className="mr-2" /> Analisis AI (Smart Insights)
+                          </Button>
                         </div>
                       </CardContent>
                     </Card>

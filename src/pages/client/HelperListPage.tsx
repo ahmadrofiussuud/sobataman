@@ -124,101 +124,148 @@ export default function HelperListPage() {
   }, [])
 
   return (
-    <div className="flex flex-col lg:flex-row gap-8 min-h-screen">
-      {/* Sidebar Filter (Desktop) */}
-      <aside className="hidden lg:block w-[260px] shrink-0 space-y-6">
-        <div className="sticky top-24">
-          <div className="flex items-center justify-between mb-6">
-            <h3 className="text-lg font-display font-bold flex items-center gap-2">
-              <SlidersHorizontal size={20} className="text-primary" /> Filter Pencarian
-            </h3>
-            <button className="text-xs font-bold text-primary hover:underline">Reset</button>
-          </div>
+    <div className="min-h-screen bg-background">
+      {/* Hero Section - Provides contrast for transparent navbar */}
+      <section className="relative bg-[#0F172A] pt-32 pb-20 overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-20"></div>
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px] -translate-y-1/2"></div>
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-[120px] translate-y-1/2"></div>
+        
+        <div className="container-custom relative z-10 px-6 lg:px-12 text-center space-y-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="space-y-4"
+          >
+            <Badge variant="outline" className="bg-white/10 border-white/20 text-white backdrop-blur-md px-4 py-1.5 text-xs font-black uppercase tracking-widest">
+              Direktori Helper SobatAman
+            </Badge>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-extrabold text-white tracking-tight">
+              Temukan Partner <span className="text-primary-light">Pendamping Terbaik</span>
+            </h1>
+            <p className="text-lg text-white/60 max-w-2xl mx-auto font-medium">
+              Helper profesional kami siap mendampingi perjalanan kemandirian dan kebahagiaan anggota keluarga Anda dengan penuh kasih.
+            </p>
+          </motion.div>
 
-          <div className="bg-surface border border-border rounded-card px-6 divide-y divide-border/50">
-            <FilterSection title="Spesialisasi">
-              {['Semua', 'Tunanetra', 'Tunarungu', 'Tunadaksa', 'ADHD', 'Kognitif', 'Lansia'].map(item => (
-                <label key={item} className="flex items-center gap-3 cursor-pointer group">
-                  <input type="checkbox" className="w-4 h-4 rounded border-border text-primary focus:ring-primary" defaultChecked={item === 'Semua'} />
-                  <span className="text-sm text-text-secondary group-hover:text-text-primary transition-colors">{item}</span>
-                </label>
-              ))}
-            </FilterSection>
-
-            <FilterSection title="Tier Helper">
-              {['Semua', 'Basic Helper', 'Certified Helper'].map(item => (
-                <label key={item} className="flex items-center gap-3 cursor-pointer group">
-                  <input type="radio" name="tier" className="w-4 h-4 border-border text-primary focus:ring-primary" defaultChecked={item === 'Semua'} />
-                  <span className="text-sm text-text-secondary group-hover:text-text-primary transition-colors">{item}</span>
-                </label>
-              ))}
-            </FilterSection>
-
-            <FilterSection title="Rating Minimum">
-              {[5, 4, 3].map(stars => (
-                <label key={stars} className="flex items-center gap-3 cursor-pointer group">
-                  <input type="radio" name="rating" className="w-4 h-4 border-border text-primary focus:ring-primary" />
-                  <div className="flex items-center gap-1">
-                    <div className="flex text-accent">
-                      {Array.from({ length: 5 }).map((_, i) => (
-                        <Star key={i} size={14} fill={i < stars ? "currentColor" : "none"} className={i < stars ? "" : "text-gray-200"} />
-                      ))}
-                    </div>
-                    <span className="text-xs font-bold text-text-secondary"> ke atas</span>
-                  </div>
-                </label>
-              ))}
-            </FilterSection>
-
-            <FilterSection title="Ketersediaan">
-              <label className="flex items-center justify-between cursor-pointer group">
-                <span className="text-sm text-text-secondary group-hover:text-text-primary transition-colors">Tersedia sekarang</span>
-                <input type="checkbox" className="w-4 h-4 rounded border-border text-primary focus:ring-primary" />
-              </label>
-              <label className="flex items-center justify-between cursor-pointer group">
-                <span className="text-sm text-text-secondary group-hover:text-text-primary transition-colors">Bisa recurring</span>
-                <input type="checkbox" className="w-4 h-4 rounded border-border text-primary focus:ring-primary" />
-              </label>
-            </FilterSection>
-
-            <FilterSection title="Jarak">
-              {['< 2 km', '< 5 km', '< 10 km', 'Semua'].map(item => (
-                <label key={item} className="flex items-center gap-3 cursor-pointer group">
-                  <input type="radio" name="distance" className="w-4 h-4 border-border text-primary focus:ring-primary" defaultChecked={item === 'Semua'} />
-                  <span className="text-sm text-text-secondary group-hover:text-text-primary transition-colors">{item}</span>
-                </label>
-              ))}
-            </FilterSection>
-
-            <div className="py-6">
-              <Button className="w-full">Terapkan Filter</Button>
+          {/* Integrated Search Bar */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="max-w-3xl mx-auto"
+          >
+            <div className="bg-white/10 backdrop-blur-xl p-2 rounded-2xl border border-white/20 shadow-2xl">
+              <div className="flex flex-col md:flex-row gap-2">
+                <div className="flex-1 relative">
+                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-white/40" size={20} />
+                  <input 
+                    type="text"
+                    placeholder="Cari berdasarkan nama, keahlian, atau lokasi..."
+                    className="w-full pl-12 pr-4 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus:bg-white/10 focus:border-primary-light outline-none transition-all"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                  />
+                </div>
+                <Button className="md:w-32 h-auto py-4 rounded-xl shadow-lg shadow-primary/30 font-bold">
+                  Cari
+                </Button>
+              </div>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </aside>
+      </section>
 
-      {/* Main Content */}
-      <div className="flex-1 space-y-6">
-        {/* Search & Sort Bar */}
-        <div className="bg-surface p-4 rounded-card border border-border shadow-sm space-y-4">
-          <div className="flex flex-col md:flex-row gap-4">
-            <div className="flex-1 relative">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-text-muted" size={20} />
-              <input 
-                type="text"
-                placeholder="Cari helper berdasarkan nama atau keahlian..."
-                className="w-full pl-12 pr-4 py-3 rounded-sm border-1.5 border-border bg-background focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
+      <div className="container-custom px-6 lg:px-12 py-12 flex flex-col lg:flex-row gap-10">
+        {/* Sidebar Filter (Desktop) */}
+        <aside className="hidden lg:block w-[300px] shrink-0 space-y-6">
+          <div className="sticky top-28 space-y-6">
+            <div className="flex items-center justify-between">
+              <h3 className="text-xl font-display font-bold flex items-center gap-3">
+                <SlidersHorizontal size={22} className="text-primary" /> Filter Pencarian
+              </h3>
+              <button className="text-xs font-black text-primary uppercase tracking-widest hover:underline">Reset</button>
             </div>
-            <div className="flex gap-2">
-              <Button variant="outline" className="md:w-48 justify-between gap-2 border-1.5">
-                Sort: Terbaru <ChevronDown size={18} />
+
+            <div className="bg-white border border-border rounded-3xl p-8 shadow-xl shadow-gray-100/50 space-y-2">
+              <FilterSection title="Spesialisasi">
+                {['Semua', 'Tunanetra', 'Tunarungu', 'Tunadaksa', 'ADHD', 'Kognitif', 'Lansia'].map(item => (
+                  <label key={item} className="flex items-center gap-3 cursor-pointer group py-0.5">
+                    <input type="checkbox" className="w-5 h-5 rounded-lg border-border text-primary focus:ring-primary transition-all cursor-pointer" defaultChecked={item === 'Semua'} />
+                    <span className="text-sm font-bold text-text-secondary group-hover:text-text-primary transition-colors">{item}</span>
+                  </label>
+                ))}
+              </FilterSection>
+
+              <FilterSection title="Tier Helper">
+                {['Semua', 'Basic Helper', 'Certified Helper'].map(item => (
+                  <label key={item} className="flex items-center gap-3 cursor-pointer group py-0.5">
+                    <input type="radio" name="tier" className="w-5 h-5 border-border text-primary focus:ring-primary transition-all cursor-pointer" defaultChecked={item === 'Semua'} />
+                    <span className="text-sm font-bold text-text-secondary group-hover:text-text-primary transition-colors">{item}</span>
+                  </label>
+                ))}
+              </FilterSection>
+
+              <FilterSection title="Rating Minimum">
+                {[5, 4, 3].map(stars => (
+                  <label key={stars} className="flex items-center gap-3 cursor-pointer group py-0.5">
+                    <input type="radio" name="rating" className="w-5 h-5 border-border text-primary focus:ring-primary transition-all cursor-pointer" />
+                    <div className="flex items-center gap-1.5">
+                      <div className="flex text-accent">
+                        {Array.from({ length: 5 }).map((_, i) => (
+                          <Star key={i} size={14} fill={i < stars ? "currentColor" : "none"} className={i < stars ? "" : "text-gray-200"} />
+                        ))}
+                      </div>
+                      <span className="text-xs font-black text-text-secondary"> {stars}.0+</span>
+                    </div>
+                  </label>
+                ))}
+              </FilterSection>
+
+              <div className="pt-6">
+                <Button className="w-full rounded-2xl h-12 font-bold shadow-lg shadow-primary/20">Terapkan Filter</Button>
+              </div>
+            </div>
+            
+            {/* Promo Card */}
+            <div className="bg-primary rounded-3xl p-6 text-white overflow-hidden relative group cursor-pointer shadow-xl shadow-primary/20 transition-transform hover:-translate-y-1">
+              <div className="absolute -right-4 -bottom-4 w-24 h-24 bg-white/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500"></div>
+              <p className="text-[10px] font-black uppercase tracking-[0.2em] mb-2 opacity-80">PROMO MEI</p>
+              <h4 className="font-bold text-lg leading-tight mb-4">Diskon 20% untuk Booking Pertama!</h4>
+              <button className="bg-white text-primary text-xs font-bold px-4 py-2 rounded-xl">Gunakan Sekarang</button>
+            </div>
+          </div>
+        </aside>
+
+        {/* Main Content */}
+        <div className="flex-1 space-y-8">
+          {/* Results Summary */}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div className="flex flex-wrap items-center gap-3">
+              <h2 className="text-2xl font-display font-extrabold text-text-primary tracking-tight">
+                {isLoading ? "Mencari helper..." : `${MOCK_HELPERS.length} Helper Terbaik`}
+              </h2>
+              {!isLoading && (
+                <div className="flex items-center gap-2">
+                  <div className="h-5 w-px bg-border mx-1" />
+                  <Badge variant="primary" className="bg-primary-light/30 text-primary border-primary/10 rounded-lg px-3 py-1 text-xs font-bold gap-2">
+                    Malang <X size={14} className="cursor-pointer hover:scale-110 transition-transform" />
+                  </Badge>
+                </div>
+              )}
+            </div>
+            
+            <div className="flex items-center gap-3">
+              <div className="hidden sm:flex bg-gray-100 p-1 rounded-xl">
+                <button className="p-2 rounded-lg bg-white shadow-sm text-primary"><LayoutGrid size={18} /></button>
+                <button className="p-2 rounded-lg text-text-muted hover:text-text-primary"><TrendingUp size={18} /></button>
+              </div>
+              <Button variant="outline" className="rounded-xl border-border px-4 py-2 font-bold flex gap-2">
+                Terbaru <ChevronDown size={18} />
               </Button>
               <Button 
                 variant="outline" 
-                className="lg:hidden shrink-0 border-1.5"
+                className="lg:hidden shrink-0 rounded-xl border-border"
                 onClick={() => setIsFilterOpen(true)}
               >
                 <Filter size={20} />
@@ -226,27 +273,6 @@ export default function HelperListPage() {
             </div>
           </div>
 
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <p className="text-sm font-bold text-text-primary">{MOCK_HELPERS.length} helper ditemukan</p>
-              <div className="h-4 w-px bg-border mx-1" />
-              <div className="flex flex-wrap gap-2">
-                <Badge variant="primary" className="gap-1 pr-1.5">
-                  Malang <X size={12} className="cursor-pointer" />
-                </Badge>
-                {searchQuery && (
-                  <Badge variant="accent" className="gap-1 pr-1.5">
-                    "{searchQuery}" <X size={12} className="cursor-pointer" onClick={() => setSearchQuery('')} />
-                  </Badge>
-                )}
-              </div>
-            </div>
-            <div className="hidden sm:flex gap-1">
-              <button className="p-2 rounded hover:bg-gray-100 text-primary"><LayoutGrid size={18} /></button>
-              <button className="p-2 rounded hover:bg-gray-100 text-text-muted"><TrendingUp size={18} /></button>
-            </div>
-          </div>
-        </div>
 
         {/* Results Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
@@ -339,6 +365,7 @@ export default function HelperListPage() {
           </>
         )}
       </AnimatePresence>
+    </div>
     </div>
   )
 }
