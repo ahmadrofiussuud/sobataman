@@ -35,6 +35,10 @@
 }
 
 @layer base {
+  html, body {
+    @apply overflow-x-hidden w-full max-w-full relative;
+  }
+
   body {
     @apply bg-background text-text-primary font-body antialiased;
     font-size: 16px;

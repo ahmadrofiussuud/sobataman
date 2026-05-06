@@ -68,12 +68,12 @@ export default function UserLayout() {
     <div className="min-h-screen bg-background">
       {/* Top Navbar - Integrated & Transparent */}
       <nav className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500 w-full",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-500 max-w-full overflow-x-hidden",
         showSolidNav 
           ? "bg-white/95 backdrop-blur-xl border-b border-border shadow-sm h-16 md:h-20" 
           : "bg-transparent h-20 md:h-28"
       )}>
-        <div className="w-full max-w-full h-full flex items-center justify-between px-4 sm:px-6 lg:px-12">
+        <div className="w-full max-w-full h-full flex items-center justify-between px-4 md:px-12">
           <Link to="/" className="flex items-center gap-2 md:gap-3 group shrink-0">
             <div className={cn(
               "h-9 w-9 md:h-12 md:w-12 rounded-xl flex items-center justify-center shadow-lg transition-all duration-300 group-hover:scale-110",
@@ -87,7 +87,7 @@ export default function UserLayout() {
               )}>S</span>
             </div>
             <span className={cn(
-              "font-display text-lg md:text-2xl font-bold hidden sm:block transition-colors duration-300",
+              "font-display text-lg md:text-2xl font-bold transition-colors duration-300",
               showSolidNav ? "text-text-primary" : "text-white drop-shadow-md"
             )}>SobatAman</span>
           </Link>
