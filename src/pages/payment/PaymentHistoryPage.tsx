@@ -60,7 +60,7 @@ export default function PaymentHistoryPage() {
           <CardContent className="p-8 space-y-3">
             <p className="text-xs text-text-muted font-bold uppercase tracking-[0.2em]">Saldo AmanPay</p>
             <p className="text-4xl font-mono font-bold text-text-primary tracking-tighter">Rp 742.500</p>
-            <Button variant="link" size="sm" className="h-auto p-0 text-primary font-bold hover:no-underline flex items-center gap-1 group">
+            <Button variant="ghost" size="sm" className="h-auto p-0 text-primary font-bold hover:no-underline flex items-center gap-1 group bg-transparent">
               Top Up Sekarang <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
             </Button>
           </CardContent>
