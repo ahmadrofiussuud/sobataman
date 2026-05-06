@@ -58,11 +58,8 @@ export default function LandingPage() {
           </div>
 
           <div className="flex items-center gap-3">
-            <Button variant="ghost" size="sm" asChild>
-              <Link to="/auth/login">Masuk</Link>
-            </Button>
             <Button size="sm" asChild>
-              <Link to="/auth/register/role">Daftar</Link>
+              <Link to="/auth/login">Masuk Dashboard</Link>
             </Button>
           </div>
         </div>
@@ -107,11 +104,8 @@ export default function LandingPage() {
                 variants={fadeIn}
                 className="flex flex-col sm:flex-row gap-5"
               >
-                <Button size="lg" className="h-14 px-10 gap-3 rounded-pill text-lg shadow-xl shadow-primary/20 hover:scale-105 transition-transform">
-                  Cari Pendamping <ArrowRight size={22} />
-                </Button>
-                <Button variant="secondary" size="lg" className="h-14 px-10 rounded-pill text-lg hover:bg-gray-100 transition-colors">
-                  Daftar Jadi Helper
+                <Button size="lg" asChild className="h-14 px-10 gap-3 rounded-pill text-lg shadow-xl shadow-primary/20 hover:scale-105 transition-transform">
+                  <Link to="/auth/login">Masuk Sekarang <ArrowRight size={22} /></Link>
                 </Button>
               </motion.div>
             </div>
@@ -340,11 +334,8 @@ export default function LandingPage() {
                 Bergabunglah dengan ribuan keluarga lainnya yang telah menemukan solusi pendampingan terpercaya.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-                <Button size="lg" className="bg-white text-primary border-white hover:bg-primary-light hover:text-primary px-10 h-16 text-lg font-bold">
-                  Daftar Sekarang — Gratis
-                </Button>
-                <Button variant="outline" className="text-white border-white hover:bg-white/10 px-10 h-16 text-lg font-bold">
-                  Lihat Cara Kerja
+                <Button size="lg" asChild className="bg-white text-primary border-white hover:bg-primary-light hover:text-primary px-10 h-16 text-lg font-bold">
+                  <Link to="/auth/login">Masuk Sekarang</Link>
                 </Button>
               </div>
             </div>
@@ -389,8 +380,8 @@ export default function LandingPage() {
             <div className="space-y-6">
               <h4 className="font-bold text-text-primary">Layanan</h4>
               <ul className="space-y-4 text-sm text-text-secondary">
-                <li><a href="#" className="hover:text-primary">Cari Helper</a></li>
-                <li><a href="#" className="hover:text-primary">Daftar Helper</a></li>
+                <li><Link to="/auth/login" className="hover:text-primary">Cari Helper</Link></li>
+                <li><Link to="/auth/login" className="hover:text-primary">Masuk Dashboard</Link></li>
                 <li><a href="#" className="hover:text-primary">Layanan Korporat</a></li>
                 <li><a href="#" className="hover:text-primary">Spesialisasi</a></li>
               </ul>

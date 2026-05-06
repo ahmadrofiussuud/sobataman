@@ -321,7 +321,7 @@ export default function FamilyDashboardPage() {
                           </Badge>
                         </div>
 
-                        <div className="flex overflow-x-auto gap-2 pb-1 scrollbar-hide">
+                        <div className="flex overflow-x-auto gap-2 pb-1 scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0">
                           {report.activities.map(act => (
                             <span key={act} className="shrink-0 px-2.5 py-1 bg-gray-50 border border-border/50 rounded-lg text-[9px] font-bold text-text-secondary">
                               {act}
