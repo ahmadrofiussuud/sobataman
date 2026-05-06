@@ -4,6 +4,9 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import AppLayout from './layouts/AppLayout'
 import AuthLayout from './layouts/AuthLayout'
 import UserLayout from './layouts/UserLayout'
+import HelperLayout from './layouts/HelperLayout'
+import HelperSchedulePage from './pages/helper/HelperSchedulePage'
+import HelperEarningsPage from './pages/helper/HelperEarningsPage'
 import LandingPage from './pages/LandingPage'
 import LoginPage from './pages/auth/LoginPage'
 import RegisterRolePage from './pages/auth/RegisterRolePage'
@@ -51,9 +54,12 @@ function App() {
 
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/payment/success" element={<PaymentSuccessPage />} />
-
-          <Route path="/helper" element={<AppLayout />}>
+          <Route path="/helper" element={<HelperLayout />}>
             <Route index element={<HelperDashboardPage />} />
+            <Route path="schedule" element={<HelperSchedulePage />} />
+            <Route path="earnings" element={<HelperEarningsPage />} />
+            <Route path="profile" element={<div className="p-8 text-2xl font-bold">Profil Helper</div>} />
+            <Route path="chat" element={<ChatPage />} />
             <Route path="onboarding" element={<HelperOnboardingPage />} />
             <Route path="journal/new" element={<HelperJournalFormPage />} />
           </Route>

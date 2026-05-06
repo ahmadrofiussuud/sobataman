@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Outlet, Link, useLocation } from 'react-router-dom'
+import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom'
 import { 
   Menu, 
   X, 
@@ -30,6 +30,12 @@ const navigation = [
 export default function AppLayout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const location = useLocation()
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    localStorage.clear()
+    navigate('/auth/login')
+  }
 
   return (
     <div className="min-h-screen bg-background">
@@ -87,7 +93,11 @@ export default function AppLayout() {
         </nav>
 
         <div className="absolute bottom-4 left-0 w-full px-4">
-          <Button variant="ghost" className="w-full justify-start gap-3 text-error hover:bg-error/5 hover:text-error">
+          <Button 
+            variant="ghost" 
+            className="w-full justify-start gap-3 text-error hover:bg-error/5 hover:text-error"
+            onClick={handleLogout}
+          >
             <LogOut size={20} />
             Logout
           </Button>

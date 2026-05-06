@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Outlet, Link, useLocation } from 'react-router-dom'
+import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom'
 import { 
   Menu, 
   X, 
@@ -34,6 +34,12 @@ export default function UserLayout() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const location = useLocation()
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    localStorage.clear()
+    navigate('/auth/login')
+  }
 
   // Detect scroll to change navbar style
   React.useEffect(() => {
@@ -48,33 +54,35 @@ export default function UserLayout() {
   // Check if we are on a page that needs a solid navbar (like payment history)
   const isSolidPage = location.pathname.includes('/payment/') || 
                      location.pathname.includes('/chat') ||
-                     location.pathname.includes('/client/helper-list')
+                     location.pathname.includes('/client/helper-list') ||
+                     (window.innerWidth < 1024 && isScrolled) // Always solid on mobile when scrolled
+  
   const showSolidNav = isScrolled || isSolidPage
 
   return (
     <div className="min-h-screen bg-background">
       {/* Top Navbar - Integrated & Transparent */}
       <nav className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-500 w-screen",
         showSolidNav 
-          ? "bg-white/90 backdrop-blur-xl border-b border-border shadow-sm h-16 md:h-20" 
+          ? "bg-white/95 backdrop-blur-xl border-b border-border shadow-sm h-16 md:h-20" 
           : "bg-transparent h-20 md:h-28"
       )}>
-        <div className="container-custom h-full flex items-center justify-between px-6 lg:px-12">
-          <Link to="/" className="flex items-center gap-3 group">
+        <div className="w-full max-w-full h-full flex items-center justify-between px-4 sm:px-6 lg:px-12">
+          <Link to="/" className="flex items-center gap-2 md:gap-3 group shrink-0">
             <div className={cn(
-              "h-10 w-10 md:h-12 md:w-12 rounded-xl flex items-center justify-center shadow-lg transition-all duration-300 group-hover:scale-110",
+              "h-9 w-9 md:h-12 md:w-12 rounded-xl flex items-center justify-center shadow-lg transition-all duration-300 group-hover:scale-110",
               showSolidNav 
                 ? "bg-primary shadow-primary/20" 
                 : "bg-white shadow-black/10"
             )}>
               <span className={cn(
-                "font-bold text-xl md:text-2xl",
+                "font-bold text-lg md:text-2xl",
                 showSolidNav ? "text-white" : "text-primary"
               )}>S</span>
             </div>
             <span className={cn(
-              "font-display text-xl md:text-2xl font-bold hidden sm:block transition-colors duration-300",
+              "font-display text-lg md:text-2xl font-bold hidden sm:block transition-colors duration-300",
               showSolidNav ? "text-text-primary" : "text-white drop-shadow-md"
             )}>SobatAman</span>
           </Link>
@@ -103,13 +111,13 @@ export default function UserLayout() {
             })}
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 md:gap-4">
             <button className={cn(
-              "relative p-3 rounded-full transition-all duration-300",
-              showSolidNav ? "bg-white border border-border text-text-secondary" : "bg-white/10 border border-white/20 text-white"
+              "relative p-2 md:p-3 rounded-full transition-all duration-300",
+              showSolidNav ? "bg-white border border-border text-text-secondary" : "bg-white/20 border border-white/20 text-white"
             )}>
-              <Bell size={22} />
-              <span className="absolute top-2.5 right-2.5 h-3 w-3 bg-accent rounded-full border-2 border-white"></span>
+              <Bell size={20} className="md:w-[22px] md:h-[22px]" />
+              <span className="absolute top-2 right-2 h-2.5 w-2.5 bg-accent rounded-full border-2 border-white"></span>
             </button>
             
             <div className={cn(
@@ -126,11 +134,13 @@ export default function UserLayout() {
             <button 
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className={cn(
-                "lg:hidden p-3 rounded-full border transition-all duration-300",
-                showSolidNav ? "bg-white border-border text-text-secondary" : "bg-white/10 border-white/20 text-white"
+                "lg:hidden p-2.5 rounded-xl border transition-all duration-300",
+                showSolidNav 
+                  ? "bg-primary text-white border-primary shadow-lg shadow-primary/20" 
+                  : "bg-white text-primary border-white shadow-xl"
               )}
             >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
         </div>
@@ -158,7 +168,11 @@ export default function UserLayout() {
                 </Link>
               ))}
               <hr className="border-border" />
-              <Button variant="ghost" className="w-full justify-start gap-4 p-4 h-auto text-error">
+              <Button 
+                variant="ghost" 
+                className="w-full justify-start gap-4 p-4 h-auto text-error"
+                onClick={handleLogout}
+              >
                 <LogOut size={24} />
                 Logout
               </Button>

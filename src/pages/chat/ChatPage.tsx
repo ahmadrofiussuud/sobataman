@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import { 
   Search, 
   MoreVertical, 
@@ -66,6 +67,7 @@ const MOCK_MESSAGES: Message[] = [
 ]
 
 export default function ChatPage() {
+  const location = useLocation()
   const [activeConvId, setActiveConvId] = useState<string | null>('1')
   const [messages, setMessages] = useState<Message[]>(MOCK_MESSAGES)
   const [inputText, setInputText] = useState('')
@@ -96,9 +98,13 @@ export default function ChatPage() {
   }
 
   const activeConv = MOCK_CONVERSATIONS.find(c => c.id === activeConvId)
+  const isHelperPath = location.pathname.startsWith('/helper')
 
   return (
-    <div className="h-screen pt-28 lg:pt-32 pb-6 px-4 lg:px-8 space-y-4">
+    <div className={cn(
+      "flex flex-col space-y-4",
+      isHelperPath ? "h-[calc(100vh-140px)]" : "h-screen pt-28 lg:pt-32 pb-6 px-4 lg:px-8"
+    )}>
       <div className="h-full flex bg-white rounded-card border border-border shadow-2xl overflow-hidden relative">
         {/* CONVERSATION LIST */}
         <aside className={cn(
