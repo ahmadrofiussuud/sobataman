@@ -138,82 +138,83 @@ export default function FamilyDashboardPage() {
           <section>
             <Card className="bg-primary text-white border-none shadow-2xl overflow-hidden relative group">
               <CardContent className="p-0">
-                <div className="p-6 md:p-8 lg:p-10 space-y-6 md:space-y-8 relative z-10">
+                <div className="p-5 md:p-8 lg:p-10 space-y-6 md:space-y-8 relative z-10">
                   <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
                     <div className="space-y-2">
-                      <Badge variant="accent" className="bg-accent text-white border-none animate-pulse px-3 py-1 text-[10px] md:text-xs">SESI BERLANGSUNG</Badge>
-                      <h2 className="text-2xl md:text-3xl font-display font-bold leading-tight">Pendampingan Mobilitas Pagi</h2>
+                      <Badge variant="accent" className="bg-accent text-white border-none animate-pulse px-3 py-1 text-[10px]">SESI BERLANGSUNG</Badge>
+                      <h2 className="text-xl md:text-3xl font-display font-bold leading-tight">Pendampingan Mobilitas Pagi</h2>
                     </div>
-                    <div className="flex items-center gap-4 w-full lg:w-auto">
+                    <div className="flex items-center justify-between w-full lg:w-auto gap-4">
                       <div className="text-left lg:text-right">
-                        <p className="text-[10px] opacity-70 uppercase font-bold tracking-wider">Estimasi Selesai</p>
-                        <p className="text-xl md:text-2xl font-mono font-bold">00:45:12</p>
+                        <p className="text-[9px] md:text-[10px] opacity-70 uppercase font-bold tracking-wider">Estimasi Selesai</p>
+                        <p className="text-lg md:text-2xl font-mono font-bold">00:45:12</p>
                       </div>
-                      <div className="hidden lg:block h-12 w-px bg-white/20"></div>
+                      <div className="h-10 w-px bg-white/20 hidden lg:block"></div>
                       <Button 
                         variant="outline" 
-                        className="bg-white text-primary border-white hover:bg-primary-light hover:text-primary font-bold h-12 md:h-14 px-6 flex-1 lg:flex-none shadow-xl"
+                        className="bg-white text-primary border-white hover:bg-primary-light hover:text-primary font-bold h-11 md:h-14 px-5 md:px-6 shadow-xl text-xs"
                         onClick={() => setIsMapModalOpen(true)}
                       >
-                        <Navigation size={18} className="mr-2" /> <span className="hidden sm:inline">Lihat</span> Lokasi
+                        <Navigation size={16} className="mr-2" /> Lokasi
                       </Button>
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 py-6 border-y border-white/10">
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
-                      <div className="space-y-2">
-                        <p className="text-[10px] opacity-70 uppercase font-bold tracking-widest text-primary-light">Klien (Anak)</p>
-                        <div className="flex items-center gap-3">
-                          <Avatar fallback="B" className="h-12 w-12 border-2 border-white/20 shadow-lg" />
-                          <p className="font-bold text-lg md:text-xl">Bambang Wijaya</p>
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 py-6 border-y border-white/10">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 md:gap-6">
+                      <div className="flex items-center gap-4 w-full sm:w-auto">
+                        <div className="space-y-1">
+                          <p className="text-[9px] opacity-70 uppercase font-bold tracking-widest text-primary-light">Klien</p>
+                          <div className="flex items-center gap-2">
+                            <Avatar fallback="B" className="h-10 w-10 border-2 border-white/20" />
+                            <p className="font-bold text-sm md:text-lg">Bambang</p>
+                          </div>
                         </div>
-                      </div>
-                      <div className="hidden sm:block text-primary-light mx-2">
-                        <ChevronRight size={24} className="opacity-50" />
-                      </div>
-                      <div className="space-y-2">
-                        <p className="text-[10px] opacity-70 uppercase font-bold tracking-widest text-primary-light">Helper</p>
-                        <div className="flex items-center gap-3">
-                          <Avatar src="https://i.pravatar.cc/150?u=1" fallback="AF" className="h-12 w-12 border-2 border-white/20 shadow-lg" />
-                          <div>
-                            <p className="font-bold text-lg md:text-xl">Ahmad Fauzi</p>
-                            <p className="text-[10px] flex items-center gap-1 opacity-80"><ShieldCheck size={10} /> Certified Helper</p>
+                        <div className="text-primary-light mx-auto sm:mx-2 rotate-90 sm:rotate-0">
+                          <ChevronRight size={20} className="opacity-50" />
+                        </div>
+                        <div className="space-y-1">
+                          <p className="text-[9px] opacity-70 uppercase font-bold tracking-widest text-primary-light">Helper</p>
+                          <div className="flex items-center gap-2">
+                            <Avatar src="https://i.pravatar.cc/150?u=1" fallback="AF" className="h-10 w-10 border-2 border-white/20" />
+                            <div>
+                              <p className="font-bold text-sm md:text-lg">Ahmad Fauzi</p>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
                     
-                    <div className="space-y-4">
-                      <div className="flex justify-between items-end text-sm">
+                    <div className="space-y-3">
+                      <div className="flex justify-between items-end text-[11px] md:text-sm">
                         <span className="opacity-80 font-medium">Progress Sesi (2/3 jam)</span>
                         <span className="font-bold text-accent">66%</span>
                       </div>
-                      <div className="h-3 w-full bg-white/10 rounded-full overflow-hidden shadow-inner">
+                      <div className="h-2.5 w-full bg-white/10 rounded-full overflow-hidden shadow-inner">
                         <motion.div 
                           initial={{ width: 0 }}
                           animate={{ width: '66%' }}
                           className="h-full bg-accent shadow-[0_0_15px_rgba(249,115,22,0.5)]"
                         ></motion.div>
                       </div>
-                      <p className="text-xs opacity-70 flex items-center gap-2 font-medium">
-                        <Clock size={14} className="text-accent" /> Dimulai 08:00 WIB · Lokasi: Taman Krida Budaya
+                      <p className="text-[10px] md:text-xs opacity-70 flex items-center gap-2 font-medium">
+                        <Clock size={12} className="text-accent" /> Dimulai 08:00 WIB · Taman Krida
                       </p>
                     </div>
                   </div>
 
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <Button variant="outline" className="bg-white/10 border-white/20 text-white hover:bg-white/20 h-12 md:h-14 font-bold rounded-xl flex-1">
-                      <Phone size={18} className="mr-2" /> Hubungi Helper
+                  <div className="flex gap-3">
+                    <Button variant="outline" className="bg-white/10 border-white/20 text-white hover:bg-white/20 h-11 md:h-14 font-bold rounded-xl flex-1 text-xs">
+                      <Phone size={16} className="mr-2" /> Hubungi
                     </Button>
-                    <Button variant="outline" className="bg-error/20 border-error/30 text-white hover:bg-error/40 h-12 md:h-14 font-bold rounded-xl flex-1 shadow-lg shadow-error/10">
-                      <AlertTriangle size={18} className="mr-2" /> Darurat / SOS
+                    <Button variant="outline" className="bg-error/20 border-error/30 text-white hover:bg-error/40 h-11 md:h-14 font-bold rounded-xl flex-1 text-xs shadow-lg shadow-error/10">
+                      <AlertTriangle size={16} className="mr-2" /> Darurat
                     </Button>
                   </div>
                 </div>
 
                 {/* Background Decoration */}
-                <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-96 h-96 bg-white/5 rounded-full blur-3xl group-hover:scale-110 transition-transform duration-700"></div>
+                <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-64 h-64 bg-white/5 rounded-full blur-3xl group-hover:scale-110 transition-transform duration-700"></div>
               </CardContent>
             </Card>
           </section>
@@ -224,28 +225,28 @@ export default function FamilyDashboardPage() {
               <section className="space-y-4">
                 <div className="flex items-center justify-between">
                   <h3 className="text-xl font-display font-bold">Anggota Keluarga</h3>
-                  <button className="text-primary text-sm font-bold flex items-center gap-1 hover:underline">
-                    <UserPlus size={16} /> Tambah
+                  <button className="text-primary text-[10px] font-black uppercase tracking-widest flex items-center gap-1 hover:underline">
+                    <UserPlus size={14} /> Tambah
                   </button>
                 </div>
-                <div className="flex overflow-x-auto pb-4 gap-4 scrollbar-hide">
+                <div className="flex overflow-x-auto pb-4 gap-4 scrollbar-hide -mx-1 px-1">
                   {[
                     { name: "Bambang Wijaya", role: "Anak", type: "Tunadaksa", status: "Sedang Sesi" },
                     { name: "Siti Aminah", role: "Ibu", type: "Lansia", status: "Tidak Ada Jadwal" }
                   ].map((member, i) => (
-                    <Card key={i} className="min-w-[280px] border-border/50 hover:border-primary transition-colors cursor-pointer">
-                      <CardContent className="p-5 flex items-center gap-4">
-                        <Avatar fallback={member.name[0]} size="lg" className="bg-primary-light text-primary font-bold" />
-                        <div className="flex-1 space-y-1">
-                          <p className="font-bold text-text-primary">{member.name}</p>
-                          <p className="text-xs text-text-secondary">{member.role} · {member.type}</p>
-                          <Badge variant={member.status === 'Sedang Sesi' ? 'primary' : 'outline'} className="text-[10px] py-0">
+                    <Card key={i} className="min-w-[240px] md:min-w-[280px] border-border/50 hover:border-primary transition-colors cursor-pointer group shadow-sm">
+                      <CardContent className="p-4 md:p-5 flex items-center gap-3">
+                        <Avatar fallback={member.name[0]} size="md" className="bg-primary-light text-primary font-bold border border-primary/10" />
+                        <div className="flex-1 min-w-0">
+                          <p className="font-bold text-text-primary text-sm truncate">{member.name}</p>
+                          <p className="text-[10px] text-text-secondary truncate">{member.role} · {member.type}</p>
+                          <Badge variant={member.status === 'Sedang Sesi' ? 'primary' : 'outline'} className="text-[8px] py-0 mt-1 h-4 font-black uppercase tracking-widest border-none">
                             {member.status}
                           </Badge>
                         </div>
                       </CardContent>
-                      <div className="px-5 pb-5">
-                        <Button variant="secondary" className="w-full text-xs h-9">Booking untuk {member.name.split(' ')[0]}</Button>
+                      <div className="px-4 md:px-5 pb-4 md:pb-5">
+                        <Button variant="secondary" className="w-full text-[10px] h-8 md:h-9 font-bold uppercase tracking-wider">Booking untuk {member.name.split(' ')[0]}</Button>
                       </div>
                     </Card>
                   ))}
@@ -261,34 +262,32 @@ export default function FamilyDashboardPage() {
                     { date: "Jumat, 01 Mei", time: "15:00 - 17:00", helper: "Budi Hartono", role: "Mobilitas Specialist", status: "Terkonfirmasi" }
                   ].map((booking, i) => (
                     <Card key={i} className="border-border/50 overflow-hidden hover:border-primary/10 transition-all shadow-sm">
-                      <CardContent className="p-0 overflow-x-auto scrollbar-hide">
-                        <div className="flex items-center p-4 md:p-6 gap-4 md:gap-8 min-w-max sm:min-w-0">
-                          <div className="flex items-center gap-3 md:gap-4 shrink-0">
-                            <div className="w-14 h-14 md:w-20 md:h-20 bg-primary-light rounded-xl flex flex-col items-center justify-center text-primary border border-primary/5">
-                              <p className="text-[9px] md:text-[10px] font-black uppercase tracking-tighter opacity-70">{booking.date.split(', ')[0]}</p>
-                              <p className="text-lg md:text-2xl font-display font-black leading-none">{booking.date.split(', ')[1].split(' ')[0]}</p>
+                      <CardContent className="p-0">
+                        <div className="flex flex-col sm:flex-row sm:items-center p-4 md:p-6 gap-4 md:gap-8">
+                          <div className="flex items-center gap-4">
+                            <div className="w-12 h-12 md:w-16 md:h-16 bg-primary-light rounded-xl flex flex-col items-center justify-center text-primary border border-primary/5 shrink-0">
+                              <p className="text-[8px] md:text-[9px] font-black uppercase tracking-tighter opacity-70 leading-none">{booking.date.split(', ')[0]}</p>
+                              <p className="text-base md:text-xl font-display font-black leading-none">{booking.date.split(', ')[1].split(' ')[0]}</p>
                             </div>
-                          </div>
-
-                          <div className="flex-1 min-w-[140px] md:min-w-0 space-y-1">
-                            <div className="flex items-center gap-2">
-                              <p className="font-extrabold text-text-primary text-base md:text-xl truncate">{booking.helper}</p>
-                            </div>
-                            <div className="flex items-center gap-2">
-                              <Badge variant={booking.status === 'Terkonfirmasi' ? 'success' : 'warning'} className="text-[8px] md:text-[9px] py-0 px-1.5 rounded-md border-none uppercase font-black tracking-widest">
+                            <div className="flex-1 min-w-0 space-y-1">
+                              <p className="font-extrabold text-text-primary text-sm md:text-lg truncate">{booking.helper}</p>
+                              <Badge variant={booking.status === 'Terkonfirmasi' ? 'success' : 'warning'} className="text-[7px] md:text-[8px] py-0 px-1.5 h-4 rounded-md border-none uppercase font-black tracking-widest">
                                 {booking.status}
                               </Badge>
                             </div>
-                            <p className="text-[10px] md:text-xs text-text-secondary font-bold flex items-center gap-1.5">
+                          </div>
+
+                          <div className="flex-1 flex flex-row sm:flex-col justify-between items-center sm:items-start gap-1">
+                            <p className="text-[10px] md:text-xs text-text-secondary font-bold flex items-center gap-1.5 order-2 sm:order-1">
                               <Clock size={12} className="text-primary/60" /> {booking.time}
                             </p>
                           </div>
 
-                          <div className="flex items-center gap-2 shrink-0 pr-2">
+                          <div className="flex items-center gap-2 w-full sm:w-auto">
                             {booking.status === 'Menunggu Konfirmasi' && (
-                              <Button variant="primary" size="sm" className="bg-success hover:bg-success/90 h-9 md:h-11 px-4 md:px-6 text-[10px] md:text-xs font-black uppercase tracking-widest rounded-xl">Approve</Button>
+                              <Button variant="primary" size="sm" className="bg-success hover:bg-success/90 h-9 md:h-10 flex-1 sm:flex-none px-4 md:px-6 text-[9px] md:text-xs font-black uppercase tracking-widest rounded-xl">Approve</Button>
                             )}
-                            <Button variant="outline" size="sm" className="text-error border-error/20 hover:bg-error/5 h-9 md:h-11 px-4 md:px-6 text-[10px] md:text-xs font-black uppercase tracking-widest rounded-xl">Batal</Button>
+                            <Button variant="outline" size="sm" className="text-error border-error/20 hover:bg-error/5 h-9 md:h-10 flex-1 sm:flex-none px-4 md:px-6 text-[9px] md:text-xs font-black uppercase tracking-widest rounded-xl">Batal</Button>
                           </div>
                         </div>
                       </CardContent>
@@ -338,7 +337,7 @@ export default function FamilyDashboardPage() {
 
                         <Button 
                           variant="accent" 
-                          className="w-full h-12 md:h-14 bg-gradient-to-r from-primary to-accent text-white font-black uppercase text-[10px] md:text-xs tracking-[0.2em] rounded-xl shadow-xl shadow-primary/20"
+                          className="w-full h-11 md:h-14 bg-gradient-to-br from-primary via-primary to-accent text-white font-black uppercase text-[10px] md:text-xs tracking-[0.15em] rounded-xl shadow-lg shadow-primary/20 hover:scale-[1.02] transition-all"
                           onClick={() => navigate(`/dashboard/ai-analysis/${i + 1}`)}
                         >
                           <Sparkles size={16} className="mr-2" /> Analisis AI
@@ -352,32 +351,32 @@ export default function FamilyDashboardPage() {
 
             <div className="space-y-8">
               {/* SECTION 6: QUICK STATS */}
-              <section className="grid grid-cols-2 gap-4">
-                <Card className="border-border/50">
+              <section className="grid grid-cols-2 gap-3 md:gap-4">
+                <Card className="border-border/50 bg-surface hover:border-primary/20 transition-colors shadow-sm">
                   <CardContent className="p-4 text-center space-y-1">
-                    <p className="text-2xl font-mono font-bold text-primary">24</p>
-                    <p className="text-[10px] text-text-muted uppercase font-bold">Sesi Bulan Ini</p>
+                    <p className="text-xl md:text-2xl font-mono font-bold text-primary">24</p>
+                    <p className="text-[9px] md:text-[10px] text-text-muted uppercase font-black tracking-widest">Sesi Bulan Ini</p>
                   </CardContent>
                 </Card>
-                <Card className="border-border/50">
+                <Card className="border-border/50 bg-surface hover:border-primary/20 transition-colors shadow-sm">
                   <CardContent className="p-4 text-center space-y-1">
-                    <p className="text-xl font-mono font-bold text-primary">Rp 1.2jt</p>
-                    <p className="text-[10px] text-text-muted uppercase font-bold">Total Biaya</p>
+                    <p className="text-lg md:text-xl font-mono font-bold text-primary">Rp 1.2jt</p>
+                    <p className="text-[9px] md:text-[10px] text-text-muted uppercase font-black tracking-widest">Total Biaya</p>
                   </CardContent>
                 </Card>
-                <Card className="border-border/50">
+                <Card className="border-border/50 bg-surface hover:border-primary/20 transition-colors shadow-sm">
                   <CardContent className="p-4 text-center space-y-1">
-                    <p className="text-2xl font-mono font-bold text-primary">4.9</p>
-                    <p className="text-[10px] text-text-muted uppercase font-bold">Rata-rata Rating</p>
+                    <p className="text-xl md:text-2xl font-mono font-bold text-primary">4.9</p>
+                    <p className="text-[9px] md:text-[10px] text-text-muted uppercase font-black tracking-widest">Avg Rating</p>
                   </CardContent>
                 </Card>
-                <Card className="border-border/50">
+                <Card className="border-border/50 bg-surface hover:border-primary/20 transition-colors shadow-sm">
                   <CardContent className="p-4 text-center space-y-1">
-                    <div className="flex justify-center -space-x-2">
-                      <Avatar src="https://i.pravatar.cc/150?u=1" className="h-6 w-6 border border-white" />
-                      <Avatar src="https://i.pravatar.cc/150?u=4" className="h-6 w-6 border border-white" />
+                    <div className="flex justify-center -space-x-1.5">
+                      <Avatar src="https://i.pravatar.cc/150?u=1" className="h-6 w-6 border-2 border-white shadow-sm" />
+                      <Avatar src="https://i.pravatar.cc/150?u=4" className="h-6 w-6 border-2 border-white shadow-sm" />
                     </div>
-                    <p className="text-[10px] text-text-muted uppercase font-bold mt-2">Helper Favorit</p>
+                    <p className="text-[9px] md:text-[10px] text-text-muted uppercase font-black tracking-widest mt-1">Helper Favorit</p>
                   </CardContent>
                 </Card>
               </section>

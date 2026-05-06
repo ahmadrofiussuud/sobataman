@@ -26,8 +26,10 @@ const navItems = [
   { name: 'Cari Helper', href: '/dashboard/helpers', icon: Search },
   { name: 'Jadwal', href: '/dashboard/bookings', icon: Calendar },
   { name: 'Jurnal', href: '/dashboard/journals', icon: BookOpen },
+  { name: 'Anggota', href: '/dashboard/family', icon: Users },
   { name: 'Chat', href: '/dashboard/chat', icon: MessageSquare },
   { name: 'Riwayat', href: '/dashboard/payment/history', icon: History },
+  { name: 'Profil', href: '/dashboard/profile', icon: User },
 ]
 
 export default function UserLayout() {

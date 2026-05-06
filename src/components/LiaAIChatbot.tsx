@@ -62,7 +62,7 @@ export const LiaAIChatbot = () => {
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(true)}
         className={cn(
-          "fixed bottom-24 right-6 lg:bottom-8 lg:right-8 z-[100] flex items-center gap-2 px-6 py-4 bg-primary text-white rounded-pill shadow-2xl shadow-primary/30 group transition-all",
+          "fixed bottom-32 right-6 lg:bottom-8 lg:right-8 z-[100] flex items-center gap-2 px-6 py-4 bg-primary text-white rounded-pill shadow-2xl shadow-primary/30 group transition-all",
           isOpen && "opacity-0 pointer-events-none"
         )}
       >

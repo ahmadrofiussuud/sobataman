@@ -26,6 +26,9 @@ import HelperDashboardPage from './pages/helper/HelperDashboardPage'
 import HelperOnboardingPage from './pages/helper/HelperOnboardingPage'
 import AIAnalysisPage from './pages/family/AIAnalysisPage'
 import HelperJournalPage from './pages/family/HelperJournalPage'
+import FamilyMembersPage from './pages/family/FamilyMembersPage'
+import ProfilePage from './pages/family/ProfilePage'
+import SettingsPage from './pages/family/SettingsPage'
 
 const queryClient = new QueryClient()
 
@@ -41,13 +44,13 @@ function App() {
             <Route path="bookings" element={<RecurringBookingPage />} />
             <Route path="helpers" element={<HelperListPage />} />
             <Route path="helpers/:id" element={<HelperProfilePage />} />
-            <Route path="family" element={<div className="font-display text-2xl font-bold">Family Members Page</div>} />
+            <Route path="family" element={<FamilyMembersPage />} />
             <Route path="reports/:id" element={<SessionReportPage />} />
             <Route path="journals" element={<HelperJournalPage />} />
             <Route path="ai-analysis/:id" element={<AIAnalysisPage />} />
             <Route path="chat" element={<ChatPage />} />
-            <Route path="profile" element={<div className="font-display text-2xl font-bold">Profile Page</div>} />
-            <Route path="settings" element={<div className="font-display text-2xl font-bold">Settings Page</div>} />
+            <Route path="profile" element={<ProfilePage />} />
+            <Route path="settings" element={<SettingsPage />} />
             <Route path="payment/history" element={<PaymentHistoryPage />} />
             <Route path="reviews" element={<ReviewPage />} />
           </Route>
