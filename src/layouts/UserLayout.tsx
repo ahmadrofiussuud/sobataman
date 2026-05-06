@@ -53,9 +53,12 @@ export default function UserLayout() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Check if we are on a page that needs a solid navbar (like payment history)
+  // Check if we are on a page that needs a solid navbar
   const isSolidPage = location.pathname.includes('/payment/') || 
                      location.pathname.includes('/chat') ||
+                     location.pathname.includes('/profile') ||
+                     location.pathname.includes('/family') ||
+                     location.pathname.includes('/settings') ||
                      location.pathname.includes('/client/helper-list') ||
                      (window.innerWidth < 1024 && isScrolled) // Always solid on mobile when scrolled
   
